@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Date</title>
+</head>
+<body>
+    <h1>Select a Date from the Calendar</h1>
+    <!-- ここにカレンダーのコードを追加する -->
+
+    <h2>Thumbnail Images</h2>
+    <ul>
+        {% for thumbnail_filename in thumbnail_filenames %}
+        <li>
+            <img src="{{ thumbnail_filename }}" alt="Thumbnail Image" width="256">
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
