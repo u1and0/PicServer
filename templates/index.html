@@ -1,19 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Select Date</title>
+  <title>トマト観察日記</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+  <link href="/static/style.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}"> -->
 </head>
 <body>
-    <h1>Select a Date from the Calendar</h1>
-    <!-- ここにカレンダーのコードを追加する -->
+  <div class="main">
+    <div class="sidebar">
+      <h2>Select a Date from the Calendar</h2>
+      <div id="datepicker-container"></div>
+    </div>
 
-    <h2>Thumbnail Images</h2>
-    <ul>
-        {% for thumbnail_filename in thumbnail_filenames %}
-        <li>
+    <div class="content">
+      <div class="flex-content">
+        <h2>Thumbnail Images</h2>
+        <ul>
+          {% for thumbnail_filename in thumbnail_filenames %}
+          <li>
             <img src="{{ thumbnail_filename }}" alt="Thumbnail Image" width="256">
-        </li>
-        {% endfor %}
-    </ul>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+  <script>
+    $(function() {
+      // ローカライズオプションを設定する
+      $.datepicker.setDefaults($.datepicker.regional["ja"]);
+      // Datepickerの初期化
+      $("#datepicker-container").datepicker();
+    });
+  </script>
 </body>
 </html>
