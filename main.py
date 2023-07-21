@@ -3,7 +3,6 @@ Usage:
     $ uvicorn main:app --port 8888 --host 0.0.0.0
 """
 import os
-from datetime import datetime
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
@@ -44,7 +43,6 @@ async def read_root(request: Request):
 @app.get("/{date}", response_class=HTMLResponse)
 async def show_selected_date(request: Request, date: str):
     """指定した日付の画像を表示"""
-    # dt = datetime.strptime(date, "%Y-%m-%d").strftime("%y%m%d")
     thumbnail_filenames = [
         os.path.join(image_directory, filename)
         for filename in os.listdir(image_directory)
@@ -54,4 +52,5 @@ async def show_selected_date(request: Request, date: str):
         "index.html", {
             "request": request,
             "thumbnail_filenames": thumbnail_filenames,
+            "date": f"20{date[:2]}-{date[2:4]}-{date[-2:]}",
         })
