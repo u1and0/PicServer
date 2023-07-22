@@ -11,13 +11,14 @@
     <!-- readonly でソフトウェアキーボードを出さないようにする -->
     <input type="text" id="datepicker" width="100%" readonly placeholder="日付を選択してください" value="{{ date }}">
 
-      <ul>
-        {% for thumbnail_filename in thumbnail_filenames %}
-        <li>
-          <img src="{{ thumbnail_filename }}" alt="Thumbnail Image">
-        </li>
-        {% endfor %}
-      </ul>
+    <img src="{{ gif_filename }}" alt="GIF Image">
+    {% for thumbnail_filename in thumbnail_filenames %}
+      {% if thumbnail_filename[16:18] == "00" %}
+      <h2>{{ thumbnail_filename[14:16] }}時</h2>
+      {% endif %}
+      <img src="{{ thumbnail_filename }}" alt="Thumbnail Image">
+      <p>{{ thumbnail_filename[14:16] }}:{{ thumbnail_filename[16:18] }}:{{ thumbnail_filename[18:20] }}</p>
+    {% endfor %}
   </div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
